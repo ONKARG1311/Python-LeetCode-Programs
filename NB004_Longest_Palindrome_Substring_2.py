@@ -4,8 +4,8 @@ class Solution:
         self.start = 0
 
         for i in range(len(s)):
-            self.expandFromCenter(self, s, i, i)
-            self.expandFromCenter(self, s, i, i+1)
+            self.expandFromCenter(s, i, i)
+            self.expandFromCenter(s, i, i+1)
         return s[self.start:self.start+self.maxlen]
 
     def expandFromCenter(self, s, l, r):
@@ -21,5 +21,5 @@ class Solution:
 if __name__ == "__main__":
     s = "aaaaaaaaaaaaaa"
     obj = Solution()
-    x = Solution.longestPalindrome(Solution, s)
+    x = obj.longestPalindrome(s)
     print(x)

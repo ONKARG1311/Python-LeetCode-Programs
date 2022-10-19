@@ -18,6 +18,8 @@ class Solution:
                 self.start = l + 1
 
 
-s = "aaaaaaaaaaaaaa"
-x = Solution.longestPalindrome(Solution, s)
-print(x)
+if __name__ == "__main__":
+    s = "aaaaaaaaaaaaaa"
+    obj = Solution()
+    x = Solution.longestPalindrome(Solution, s)
+    print(x)

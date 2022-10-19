@@ -2,7 +2,7 @@ from itertools import permutations
 
 
 class Solution:
-    def findSubstring(s, words):
+    def findSubstring(self, s: str, words: list[str]) -> list[int]:
         x = set(["".join(i) for i in permutations(words)])
         pos = []
         for i in x:
@@ -10,7 +10,9 @@ class Solution:
         return list(set(pos))
 
 
-s = "aaa"
-words = ["a", "a"]
-m = Solution.findSubstring(s, words)
-print(m)
+if __name__ == "__main__":
+    s = "aaa"
+    words = ["a", "a"]
+    obj = Solution()
+    x = obj.findSubstring(s, words)
+    print(x)

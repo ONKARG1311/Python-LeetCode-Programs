@@ -1,5 +1,5 @@
 class Solution:
-    def longestPalindrome(s):
+    def longestPalindrome(self, s: str):
         x = [s[i: j] for i in range(len(s)) for j in range(i+1, len(s)+1)]
         y = [k for k in x if k == k[::-1]]
         z = [len(k) for k in y]
@@ -7,6 +7,8 @@ class Solution:
         return y[w]
 
 
-s = "babad"
-x = Solution.longestPalindrome(s)
-print(x)
+if __name__ == "__main__":
+    s = "babad"
+    obj = Solution()
+    x = obj.longestPalindrome(s)
+    print(x)

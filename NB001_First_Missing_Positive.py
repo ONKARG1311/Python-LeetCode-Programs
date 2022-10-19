@@ -1,5 +1,5 @@
 class Solution:
-    def firstMissingPositive(nums) -> int:
+    def firstMissingPositive(self, nums: list[int]) -> int:
         n = 1
         nums2 = sorted(list(set([x for x in nums if x > 0])))
         for i in range(len(nums2)):
@@ -8,5 +8,8 @@ class Solution:
         return len(nums2)+1
 
 
-x = Solution.firstMissingPositive(range(1000000))
-print(x)
+if __name__ == "__main__":
+    nums = range(100)
+    obj = Solution()
+    x = obj.firstMissingPositive(nums)
+    print(x)

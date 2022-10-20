@@ -7,7 +7,8 @@ class Solution:
         return temp
 
 
-strs = ["flower", "flow", "flight"]
-obj = Solution()
-x = obj.longestCommonPrefix(strs)
-print(x)
+if __name__ == "__main__":
+    strs = ["flower", "flow", "flight"]
+    obj = Solution()
+    x = obj.longestCommonPrefix(strs)
+    print(x)

@@ -25,6 +25,8 @@ class Solution:
         return s[self.start:self.start+self.length]
 
 
-s = "cbbd"
-x = Solution.longestPalindrome(Solution, s)
-print(x)
+if __name__ == "__main__":
+    s = "cbbd"
+    obj = Solution()
+    x = obj.longestPalindrome(s)
+    print(x)

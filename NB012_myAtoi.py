@@ -30,6 +30,8 @@ class Solution:
         return self.num
 
 
-s = "  -42"
-x = Solution.myAtoi(Solution, s)
-print(x)
+if __name__ == "__main__":
+    s = "  -42"
+    obj = Solution()
+    x = obj.myAtoi(s)
+    print(x)

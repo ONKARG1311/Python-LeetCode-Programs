@@ -1,6 +1,6 @@
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
-        return max(self.longestParentheses(self, s), self.longestParentheses(self, s[::-1]))
+        return max(self.longestParentheses(s), self.longestParentheses(s[::-1]))
 
     def longestParentheses(self, s: str) -> int:
         ml = l = r = 0
@@ -16,6 +16,8 @@ class Solution:
         return ml
 
 
-s = ")()"
-x = Solution.longestValidParentheses(Solution, s)
-print(x)
+if __name__ == "__main__":
+    s = "))()()(())"
+    obj = Solution()
+    x = obj.longestValidParentheses(s)
+    print(x)

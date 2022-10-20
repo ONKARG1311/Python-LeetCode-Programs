@@ -4,7 +4,7 @@ class Solution:
         for i in range(len(s)):
             for j in range(i, len(s)+1, 2):
 
-                if self.ValidParentheses(self, s[i:j]):
+                if self.ValidParentheses(s[i:j]):
                     if len(s[i:j]) > self.len:
                         self.len = len(s[i:j])
                 else:
@@ -26,6 +26,8 @@ class Solution:
             return True
 
 
-s = "))()()(())"
-x = Solution.longestValidParentheses(Solution, s)
-print(x)
+if __name__ == "__main__":
+    s = "))()()(())"
+    obj = Solution()
+    x = obj.longestValidParentheses(s)
+    print(x)

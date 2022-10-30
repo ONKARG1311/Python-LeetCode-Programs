@@ -1,11 +1,10 @@
-def main(lines):
+def bingo(lines):
 
-    n = int(lines[0])
-    x = lines[1:]
+    n, x = int(lines[0]), lines[1:]
 
+    check_d1 = check_d2 = 1
     for i in range(n):
-        check_row = 1
-        check_col = 1
+        check_row = check_col = 1
 
         for j in range(n):
             if x[i][j] == "x":
@@ -15,10 +14,6 @@ def main(lines):
 
         if check_row or check_col:
             return "Yes"
-
-    check_d1 = 1
-    check_d2 = 1
-    for i in range(n):
 
         if x[i][i] == "x":
             check_d1 = 0
@@ -32,6 +27,7 @@ def main(lines):
 
 
 if __name__ == '__main__':
+
     lines = "3\nxox\noxx\nxxo"
     lines = lines.split()
-    print(main(lines))
+    print(bingo(lines))

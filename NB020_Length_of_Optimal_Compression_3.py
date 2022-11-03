@@ -1,41 +1,27 @@
+from functools import lru_cache
+
+
 class Solution:
     def getLengthOfOptimalCompression(self, s: str, k: int) -> int:
+        n = len(s)
 
-        if s.strip() == str():
-            return 0
+        @lru_cache(None)
+        def counts(k, i, j, c):
+            if k < 0:
+                return n
+            if i >= n:
+                return 0
 
-        temp = list()
-        for i in range(len(s)):
-            if temp == list():
-                temp.append(1)
-            elif s[i] == s[i-1]:
-                temp.append(temp.pop()+1)
-            else:
-                temp.append(1)
-        temp.sort()
+            if 0 <= j < n and s[i] == s[j]:
+                return int(c == 1 or c == 9 or c == 99) + counts(k, i + 1, i, c + 1)
+            return min(1 + counts(k, i + 1, i, 1), counts(k - 1, i + 1, j, c))
 
-        sum = k
-        for i in range(len(temp)):
-            if sum >= temp[i]:
-                sum -= temp[i]
-                temp[i] = 0
-            else:
-                temp[i] -= sum
-                break
-
-        sum = 0
-        for i in temp:
-            if i == 1:
-                sum += 1
-            elif i > 1:
-                sum += len(str(i))+1
-
-        return sum
+        return counts(k, 0, -1, 0)
 
 
 if __name__ == "__main__":
-    s = "aabbaa"
-    k = 2
+    s = "aaaaaaaaaaa"
+    k = 0
     obj = Solution()
     x = obj.getLengthOfOptimalCompression(s, k)
     print(x)

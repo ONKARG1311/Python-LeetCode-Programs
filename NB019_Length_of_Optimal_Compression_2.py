@@ -1,5 +1,4 @@
 from functools import lru_cache
-from math import inf
 
 
 class Solution:
@@ -7,16 +6,18 @@ class Solution:
         n = len(s)
 
         @lru_cache(None)
-        def counts(k, i, j, c):
+        def dp(i, pvv, pvc, k):
             if k < 0:
-                return inf
+                return n
             if i >= n:
                 return 0
-            if 0 <= j < n and s[i] == s[j]:
-                return int(c == 1 or c == 9 or c == 99) + counts(k, i + 1, i, c + 1)
-            return min(1 + counts(k, i + 1, i, 1), counts(k - 1, i + 1, j, c))
 
-        return counts(k, 0, -1, 0)
+            delete = dp(i + 1, pvv, pvc, k - 1)
+            keep = (dp(i + 1, pvv, pvc + 1, k) + int(pvc in (1, 9, 99)) if s[i] == pvv
+                    else dp(i + 1, s[i], 1, k) + 1)
+
+            return min(delete, keep)
+        return dp(0, "", 0, k)
 
 
 if __name__ == "__main__":

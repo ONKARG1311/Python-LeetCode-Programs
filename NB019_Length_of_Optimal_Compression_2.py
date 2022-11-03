@@ -1,5 +1,4 @@
 from functools import lru_cache
-from math import inf
 
 
 class Solution:
@@ -9,7 +8,7 @@ class Solution:
         @lru_cache(None)
         def counts(k, i, j, c):
             if k < 0:
-                return inf
+                return n
             if i >= n:
                 return 0
             if 0 <= j < n and s[i] == s[j]:

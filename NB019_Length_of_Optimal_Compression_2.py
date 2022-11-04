@@ -7,14 +7,12 @@ class Solution:
 
         @lru_cache(None)
         def dp(i, pvv, pvc, k):
-            if k < 0:
-                return n
-            if i >= n:
-                return 0
+            if k < 0 or i >= n:
+                return {k < 0: n, i >= n: 0}[True]
 
             delete = dp(i + 1, pvv, pvc, k - 1)
-            keep = (dp(i + 1, pvv, pvc + 1, k) + int(pvc in (1, 9, 99)) if s[i] == pvv
-                    else dp(i + 1, s[i], 1, k) + 1)
+            keep = (dp(i + 1, pvv, pvc + 1, k) + int(pvc in (1, 9, 99))
+                    if s[i] == pvv else dp(i + 1, s[i], 1, k) + 1)
 
             return min(delete, keep)
         return dp(0, "", 0, k)

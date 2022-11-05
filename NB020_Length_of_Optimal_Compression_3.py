@@ -8,7 +8,7 @@ class Solution:
         @lru_cache(None)
         def counts(k, i, j, c):
             if k < 0 or i >= n:
-                return {k < 0: n, i >= n: 0}[True]
+                return {i >= n: 0, k < 0: n}[True]
 
             if 0 <= j < n and s[i] == s[j]:
                 return int(c in (1, 9, 99)) + counts(k, i + 1, i, c + 1)

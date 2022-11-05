@@ -28,8 +28,7 @@ class Solution:
     def validParentheses(self, s: str) -> bool:
         count = 0
         for i in s:
-            if i in ('(', ')'):
-                count = count + (1 if i == '(' else -1)
+            count = count + (1 if i == '(' else (-1 if i == ')' else 0))
             if count < 0:
                 return False
         return count == 0

@@ -4,10 +4,7 @@ from collections import defaultdict
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         d = defaultdict(int)
-
-        for c in t:
-            d[c] += 1
-
+        d.update({c: t.count(c) for c in t})
         n, output, l, count = len(d), str(), 0, 0
 
         for r in range(len(s)):

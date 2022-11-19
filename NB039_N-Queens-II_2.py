@@ -1,11 +1,11 @@
 class Solution:
-    def solveNQueens(self, n: int) -> list[list[str]]:
-        state = [["."] * n for _ in range(n)]
-        output, visited_col, visited_d1, visited_d2 = list(), set(), set(), set()
+    def totalNQueens(self, n: int) -> int:
+        state = [['.'] * n for _ in range(n)]
+        output, visited_col, visited_d1, visited_d2 = set(), set(), set(), set()
 
         def backtrack(r):
             if r == n:
-                output.append(["".join(row) for row in state])
+                output.add(map('#'.join, map(''.join, state)))
                 return None
 
             for c in range(n):
@@ -23,11 +23,11 @@ class Solution:
                     state[r][c] = '.'
 
         backtrack(0)
-        return output
+        return len(output)
 
 
 if __name__ == "__main__":
     n = 4
     obj = Solution()
-    z = obj.solveNQueens(n)
+    z = obj.totalNQueens(n)
     print(z)
